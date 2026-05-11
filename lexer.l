@@ -239,7 +239,7 @@ include        BEGIN(incl);
 
 "/*" {
 
-    register int c;
+    int c;
 
     for ( ; ; ) {
 

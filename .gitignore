@@ -1,9 +1,26 @@
-# ignore objects and archives
+# Build directories
+build/
+build-*/
+
+# CMake artifacts (if configured in-source)
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Object files and archives
 *.[oa]
 
-# ignore Qt user settings file
-ccl.pro.user
-
-# ignore parser generated file
-parser.hpp
+# flex/bison generated sources
+lexer.cpp
 parser.cpp
+parser.hpp
+
+# IDE / editor
+.vscode/
+.idea/
+*.user
+
+# macOS
+.DS_Store

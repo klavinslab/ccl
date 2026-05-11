@@ -5,6 +5,21 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# macOS ships an ancient bison (2.3 from 2008) and flex at /usr/bin/.
+# Hint cmake to Homebrew's keg-only locations first so a fresh dev
+# doesn't have to fiddle with PATH after `brew install bison flex`.
+if(APPLE)
+    foreach(_tool bison flex)
+        string(TOUPPER ${_tool} _TOOL)
+        if(NOT ${_TOOL}_EXECUTABLE)
+            find_program(${_TOOL}_EXECUTABLE ${_tool}
+                PATHS /opt/homebrew/opt/${_tool}/bin
+                      /usr/local/opt/${_tool}/bin
+                NO_DEFAULT_PATH)
+        endif()
+    endforeach()
+endif()
+
 find_package(BISON 3.0 REQUIRED)
 find_package(FLEX  2.6 REQUIRED)
 

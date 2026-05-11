@@ -9,14 +9,14 @@ win32 {
 }
 
 macx {
-  QMAKE_CXXFLAGS += -fast -w
+  QMAKE_CXXFLAGS += -w
 }
 
 linux-g++* {
   QMAKE_CXXFLAGS += -Ofast -DLINUX -w
 }
 
-QT       -= core x86_64
+QT       -= core gui
 
 TARGET = ccl
 TEMPLATE = lib
